@@ -1,0 +1,15 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      # HTTP (Istio Ingress)
+      - containerPort: 30000
+        hostPort: 80
+        protocol: TCP
+
+      # HTTPS (Istio Ingress)
+      - containerPort: 30001
+        hostPort: 443
+        protocol: TCP
